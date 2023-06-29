@@ -1,4 +1,4 @@
--- Автоустановка packer если он не установлен
+-- Автоустановка packer, если он не установлен
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -9,10 +9,9 @@ local ensure_packer = function()
 	end
 	return false
 end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
+local packer_bootstrap = ensure_packer() -- true, если packer только что был установлен
 
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
+-- автокоманда, которая перезагружает neovim и устанавливает/обновляет/удаляет плагины при сохранении файла
 vim.cmd([[ 
   augroup packer_user_config
     autocmd!
@@ -20,60 +19,60 @@ vim.cmd([[
   augroup end
 ]])
 
--- import packer safely
+-- импорт 'packer' в безопасном режиме
 local status, packer = pcall(require, "packer")
 if not status then
 	return
 end
 
--- add list of plugins to install
+-- добавление списка плагинов для установки
 return packer.startup(function(use)
-	-- packer can manage itself
+	-- packer может управлять собой
 	use("wbthomason/packer.nvim")
 
-	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+	use("nvim-lua/plenary.nvim") -- функции lua, которые используются многими плагинами
 
-	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+	use("bluz71/vim-nightfly-guicolors") -- цветовая схема
 
-	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
+	use("christoomey/vim-tmux-navigator") -- tmux и навигация окнам
 
-	use("szw/vim-maximizer") -- maximizes and restores current window
+	use("szw/vim-maximizer") -- разворачивание активного окна
 
-	-- essential plugins
-	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
-	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
+	-- важные плагины
+	use("tpope/vim-surround") -- добавление, изменение, удаление кавычек
+	use("inkarkat/vim-ReplaceWithRegister") -- замена с учетом регистра
 
-	-- commenting with gc
+	-- комментирование
 	use("numToStr/Comment.nvim")
 
-	-- file explorer
+	-- дерево файлов и папок
 	use("nvim-tree/nvim-tree.lua")
 
-	-- vs-code like icons
+	-- иконки как в VSCode
 	use("nvim-tree/nvim-web-devicons")
 
-	-- statusline
+	-- статус-бар
 	use("nvim-lualine/lualine.nvim")
 
-	-- fuzzy finding w/ telescope
+	-- поиск с telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 
-	-- autocompletion
+	-- автодополнение
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
 
-	-- snippets
+	-- сниппеты
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
-	-- managing & installing lsp servers, linters & formatters
+	-- управление и установка lsp серверов, линтеров и форматтеров
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
 	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
-	-- configuring lsp servers
+	-- настройка lsp серверов
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use({
@@ -87,11 +86,11 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
-	-- formatting & linting
+	-- форматтеры и линтеры
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
-	-- treesitter configuration
+	-- настройка treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -100,11 +99,11 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- auto closing
+	-- авто-закрытие
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
-	-- git integration
+	-- интеграция с git
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
 	if packer_bootstrap then
