@@ -55,26 +55,26 @@ return packer.startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 
 	-- поиск с telescope
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
-	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- зависимость для лучшей производительности сортировки
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- нечеткий поиск
 
 	-- автодополнение
-	use("hrsh7th/nvim-cmp") -- completion plugin
-	use("hrsh7th/cmp-buffer") -- source for text in buffer
-	use("hrsh7th/cmp-path") -- source for file system paths
+	use("hrsh7th/nvim-cmp") -- плагин для работы автодополнения
+	use("hrsh7th/cmp-buffer") -- автодополнение для текста в буфере
+	use("hrsh7th/cmp-path") -- автодополнение путей
 
 	-- сниппеты
-	use("L3MON4D3/LuaSnip") -- snippet engine
-	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+	use("L3MON4D3/LuaSnip") -- движок для сниппетов
+	use("saadparwaiz1/cmp_luasnip") -- для автодополнения
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
 	-- управление и установка lsp серверов, линтеров и форматтеров
-	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+	use("williamboman/mason.nvim") -- отвечает за управление lsp серверами, линтерами и форматорами
+	use("williamboman/mason-lspconfig.nvim") -- мост между mason и lspconfig
 
 	-- настройка lsp серверов
-	use("neovim/nvim-lspconfig") -- easily configure language servers
-	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
+	use("neovim/nvim-lspconfig") -- легкая настройка lsp серверов
+	use("hrsh7th/cmp-nvim-lsp") -- для автодополнения
 	use({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
@@ -82,13 +82,13 @@ return packer.startup(function(use)
 			{ "nvim-tree/nvim-web-devicons" },
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
-	}) -- enhanced lsp uis
-	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+	}) -- улучшение интерфейса lsp
+	use("jose-elias-alvarez/typescript.nvim") -- доп. функционал для typescript сервера (например переименование файла, обновление импорта)
+	use("onsails/lspkind.nvim") -- иконки как в VSCode для автодополнения
 
 	-- форматтеры и линтеры
-	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	use("jose-elias-alvarez/null-ls.nvim") -- настройка форматтеров и линтеров
+	use("jayp0521/mason-null-ls.nvim") -- мост между mason и null-ls
 
 	-- настройка treesitter
 	use({
@@ -99,12 +99,12 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- авто-закрытие
-	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
-	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+	-- автозакрытие
+	use("windwp/nvim-autopairs") -- автозакрытие скобок, кавычек и т.д.
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- автозакрытие тегов
 
 	-- интеграция с git
-	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	use("lewis6991/gitsigns.nvim") -- отображение линий изменения слева
 
 	if packer_bootstrap then
 		require("packer").sync()
