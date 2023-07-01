@@ -21,7 +21,7 @@ null_ls.setup({
 			extra_args = function()
 				return {
 					{ "--tab-width", 4 },
-					{ "--print-width", 190 },
+					{ "--print-width", 135 },
 					{ "--use-tabs", true },
 				}
 			end,
