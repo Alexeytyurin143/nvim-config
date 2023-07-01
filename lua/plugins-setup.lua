@@ -53,6 +53,7 @@ return packer.startup(function(use)
 
 	-- статус-бар
 	use("nvim-lualine/lualine.nvim")
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 
 	-- поиск с telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- зависимость для лучшей производительности сортировки
