@@ -21,6 +21,9 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
 
+opt.mouse = ""
+opt.colorcolumn = "135"
+
 -- appearance
 
 -- turn on termguicolors for nightfly colorscheme to work
