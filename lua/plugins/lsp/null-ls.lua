@@ -19,7 +19,11 @@ null_ls.setup({
 		--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
 		formatting.prettier.with({
 			extra_args = function()
-				return { "--tab-width", 4 } and { "--use-tabs", true } and { "--print-width", 190 }
+				return {
+					{ "--tab-width", 4 },
+					{ "--print-width", 190 },
+					{ "--use-tabs", true },
+				}
 			end,
 		}), -- js/ts formatter
 		formatting.stylua, -- lua formatter
