@@ -17,7 +17,9 @@ null_ls.setup({
 	sources = {
 		--  to disable file types use
 		--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
-		formatting.prettier.with({ extra_args = { "--tab-width 4", "--use-tabs", "--print-width 135" } }), -- js/ts formatter
+		formatting.prettier.with({
+			extra_args = { "--tab-width 4", "--use-tabs", "--print-width 150" },
+		}), -- js/ts formatter
 		formatting.stylua, -- lua formatter
 		diagnostics.eslint_d.with({ -- js/ts linter
 			-- only enable eslint if root has .eslintrc.js
